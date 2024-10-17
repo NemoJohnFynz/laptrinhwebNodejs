@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liên hệ</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+  <div class="container mt-5">
+    <%- include('header') %>
+    <h1>Liên hệ với chúng tôi</h1>
+
+    <p>Địa chỉ: 242 Đường Tây Xuyên, Thành phố Châu Đốc</p>
+    <p>Số điện thoại: 0836887911</p>
+    <p>Email: phtien2101074@student.ctuet.edu.vn</p>
+
+    <h2>Gửi tin nhắn cho chúng tôi</h2>
+    <form>
+      <div class="mb-3">
+        <label for="name" class="form-label">Họ và tên</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Địa chỉ email</label>
+        <input type="email" class="form-control" id="email" required>
+      </div>
+      <div class="mb-3">
+        <label for="message" class="form-label">Tin nhắn</label>
+        <textarea class="form-control" id="message" rows="3" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Gửi</button>
+    </form>
+
+    <h2 class="mt-5">Địa chỉ</h2>
+    <div>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.1097249187614!2d105.11903221414487!3d10.684633392325452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3170a3d1a944c859%3A0x5e605c0573878f1b!2s242%20T%C3%A2y%20Xuy%C3%AAn%2C%20Ch%C3%A2u%20%C4%90%E1%BB%8Dc%2C%20An%20Giang!5e0!3m2!1sen!2sus!4v1696618472058!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+    </div>
+    <%- include('footer') %>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
