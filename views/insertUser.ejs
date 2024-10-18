@@ -1,0 +1,47 @@
+<!-- views/insertUser.ejs -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thêm người dùng mới</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <%- include('header') %>
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Thêm người dùng mới</h1>
+    <form action="/user/insert" method="POST">
+      <div class="mb-3">
+        <label for="username" class="form-label">Tên đăng nhập</label>
+        <input type="text" class="form-control" id="username" name="username" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Mật khẩu</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+      </div>
+      <div class="mb-3">
+        <label for="fullname" class="form-label">Họ và tên</label>
+        <input type="text" class="form-control" id="fullname" name="fullname" required>
+      </div>
+      <div class="mb-3">
+        <label for="address" class="form-label">Địa chỉ</label>
+        <input type="text" class="form-control" id="address" name="address" required>
+      </div>
+      <div class="mb-3">
+        <label for="sex" class="form-label">Giới tính</label>
+        <select class="form-control" id="sex" name="sex" required>
+          <option value="male">Nam</option>
+          <option value="female">Nữ</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Thêm người dùng</button>
+    </form>
+  </div>
+  <%- include('footer') %>
+</body>
+</html>

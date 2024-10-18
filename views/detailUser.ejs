@@ -1,0 +1,25 @@
+<!-- views/detailUser.ejs -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi tiết người dùng</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <%- include('header') %>
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Chi tiết người dùng</h1>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Họ và tên: <%= user.fullname %></h5>
+        <p class="card-text">Địa chỉ: <%= user.address %></p>
+        <p class="card-text">Giới tính: <%= user.sex === 'male' ? 'Nữ' : 'Nam' %></p>
+        <p class="card-text">Email: <%= user.email %></p>
+      </div>
+    </div>
+  </div>
+  <%- include('footer') %>
+</body>
+</html>

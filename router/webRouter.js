@@ -4,6 +4,8 @@ import { getParamsURL } from '../getURL'; // Đường dẫn tới file chứa h
 import { homeController } from '../controller/Home.controller';
 import { aboutController } from '../controller/aboutController';
 import { contactController } from '../controller/ContactController';
+import { deleteUser, detailUser, inserUser, listUser, registerUser, updateUser, getUserById } from '../controller/userController'; 
+
 
 const router = express.Router();
 
@@ -28,7 +30,40 @@ router.get('/getURL', (req, res) => {
 
 // Route cho trang Test
 router.get('/test', (req, res) => {
-    res.render('test'); // Render trang test.ejs
+    res.render('test'); 
 });
+
+
+//đăng ký 
+router.get('/register', (req, res) => {
+    res.render('register', { error: null });
+});
+router.post('/registerUser', registerUser);
+
+//list user
+router.get('/getlistuser',listUser);
+
+
+//cập nhật người dùng
+router.get('/:id/updateUser', getUserById); 
+router.post('/:id/updates', updateUser); 
+
+
+router.get('/:id/detailUser', (req, res) => {
+    res.render('detailUser', { userId: req.params.id });
+});
+router.get('/:id/details', detailUser);
+
+
+//thêm user
+router.get('/insertUser', (req, res) => {
+    res.render('insertUser'); // Hiển thị form thêm người dùng mới
+});
+router.post('/insertUser', inserUser);
+
+
+//só user
+router.post('/:id/delete', deleteUser);
+
 
 export default router;

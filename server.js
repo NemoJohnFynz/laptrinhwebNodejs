@@ -39,13 +39,11 @@ viewEngine(app)
 //     res.render("main")
 // })
 
-app.use(bodyParser.urlencoded({ extended: false }));
+
+
+app.use(express.urlencoded({ extended: true }));
 
 app.use('/',router);
-
-app.use('/user',userRouter);
-
-
 
 app.listen(port, ()=>{
     console.log(`HÔ hô Nemo app listening on port ${port}`);
