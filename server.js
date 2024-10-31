@@ -6,12 +6,20 @@ import viewEngine from './views/viewEJS';
 import router from './router/webRouter';
 import bodyParser from 'body-parser';
 import userRouter from './router/userRouter';
+import session from 'express-session';
 
 
 
 const app = express()
 const port = process.env.port
 viewEngine(app)
+
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+    }))
 
 // app.get('/about', (req,res ) =>{
 //     res.send('hello word!.page about')

@@ -4,7 +4,7 @@ import { getParamsURL } from '../getURL'; // Đường dẫn tới file chứa h
 import { homeController } from '../controller/Home.controller';
 import { aboutController } from '../controller/aboutController';
 import { contactController } from '../controller/ContactController';
-import { deleteUser, detailUser, inserUser, listUser, registerUser, updateUser, getUserById } from '../controller/userController'; 
+import { deleteUser, detailUser, inserUser, listUser, registerUser, updateUser, getUserById, login } from '../controller/userController'; 
 
 
 const router = express.Router();
@@ -64,6 +64,11 @@ router.post('/insertUser', inserUser);
 
 //só user
 router.post('/:id/delete', deleteUser);
+
+//login user
+
+router.get('/login', (req, res) => res.render('login', { error: null }));
+router.post('/login',login)
 
 
 export default router;

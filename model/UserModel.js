@@ -67,9 +67,13 @@ const detailUser = async(id) => {
 
 const getUserById = async (id) => {
     const [rows] = await pool.execute('SELECT * FROM users WHERE id = ?', [id]);
-    return rows[0]; // Trả về người dùng đầu tiên, nếu có
+    return rows[0];
 };
 
+ const login = async(username, password) => {
+    const [rows] = await pool.execute('SELECT * From users WHERE username = ?',[username]);
+    return rows[0];
+ }
 
 
-export { gelAllUser, register, inserUser , updateUser, deleteUser, detailUser, getUserById }
+export { gelAllUser, register, inserUser , updateUser, deleteUser, detailUser, getUserById, login }

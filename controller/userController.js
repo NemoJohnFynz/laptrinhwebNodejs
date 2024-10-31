@@ -1,4 +1,7 @@
 import * as UserModel from "../model/UserModel";
+import generateToken  from "../midderwere/createToken"
+import bcrypt from 'bcryptjs';
+
 
 const registerUser = async (req, res) => {
     try {
@@ -80,4 +83,37 @@ const updateUser = async (req, res) => {
         }
     };
 
-export {registerUser, listUser, updateUser, deleteUser, detailUser, inserUser, getUserById}
+    const login = async (req, res) => {
+        
+        const { username, password } = req.body;
+        
+        try {
+            const user = await UserModel.login(username);
+            if (!user) {
+                return res.render('login', { error: 'Tên người dùng không tồn tại.' });
+            }
+    
+            const isPasswordMatch = await bcrypt.compare(password, user.password);
+            if (!isPasswordMatch) {
+                return res.render('login', { error: 'Sai mật khẩu.' });
+            }
+    
+            // Tạo token và gán vào cookie
+            generateToken(res, user.id);
+            res.cookie("username", user.username, {
+                httpOnly: true,
+                secure: process.env.NODE_ENV !== "development",
+                sameSite: "strict",
+                maxAge: 30 * 24 * 60 * 60 * 1000,
+              });
+    
+            
+            res.redirect('/getlistuser');
+        } catch (error) {
+            console.error('Lỗi khi đăng nhập:', error);
+            res.render('login', { error: 'Lỗi server, vui lòng thử lại sau.' });
+        }
+    };
+    
+    
+export {registerUser, listUser, updateUser, deleteUser, detailUser, inserUser, getUserById, login}
