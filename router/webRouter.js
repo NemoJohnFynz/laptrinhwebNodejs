@@ -4,7 +4,8 @@ import { getParamsURL } from '../getURL'; // Đường dẫn tới file chứa h
 import { homeController } from '../controller/Home.controller';
 import { aboutController } from '../controller/aboutController';
 import { contactController } from '../controller/ContactController';
-import { deleteUser, detailUser, inserUser, listUser, registerUser, updateUser, getUserById, login } from '../controller/userController'; 
+import { deleteUser, detailUser, inserUser, listUser, registerUser, updateUser, getUserById, login, logout } from '../controller/userController'; 
+import { authenticate } from '../midderwere/checkUser';
 
 
 const router = express.Router();
@@ -68,7 +69,13 @@ router.post('/:id/delete', deleteUser);
 //login user
 
 router.get('/login', (req, res) => res.render('login', { error: null }));
-router.post('/login',login)
+router.post('/login',login);
 
+
+router.get('/authentication', authenticate, (req, res) => {
+    res.render('index', { username: req.user.username });
+  });
+
+router.get('/logout', logout);
 
 export default router;

@@ -1,39 +1,37 @@
-<!-- các router đã làm:
-1. date
-2. getUrl
-ejs home
-ejs about 
-ejs test -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">Nemo Web</a>
-      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span> -->
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/about">thêm</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/contact">Liên Hệ</a>
-          </li>
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <!-- Các mục bên trái -->
+        <li class="nav-item">
+          <a class="nav-link" href="/about">Thêm</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Liên Hệ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/getlistuser">Quản lý người dùng</a>
+        </li>
+      </ul>
 
+      <!-- Các mục bên phải -->
+      <ul class="navbar-nav ms-auto">
+        <% if (username) { %> 
           <li class="nav-item">
-            <a class="nav-link" href="/login">đăng nhập</a>
+            <a class="nav-link" href="#">Xin chào, <%= username %></a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link" href="/register">dăng ký</a>
+            <a class="nav-link" href="/logout">Đăng xuất</a>
           </li>
-
+        <% } else { %>
           <li class="nav-item">
-            <a class="nav-link" href="/getlistuser">Người dùng</a>
+            <a class="nav-link" href="/login">Đăng nhập</a>
           </li>
-          
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Đăng ký</a>
           </li>
-        </ul>
-      </div>
+        <% } %>
+      </ul>
     </div>
-  </nav>
-  
+  </div>
+</nav>

@@ -4,4 +4,5 @@ const viewEngine = (app) =>{
     app.set("views","./views")
 }
 
+
 export default viewEngine

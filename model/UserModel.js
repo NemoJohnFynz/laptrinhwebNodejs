@@ -25,7 +25,6 @@ const register = async(username, password, fullname, address, sex, email)=>{
         console.log('lỗi gì đó không biết: ', error);
         throw error;
     }
-    // const [row,feilds] = await pool.execute('INSERT INTO users VALUES(?,?,?,?,?,?)')
 
 }
 
@@ -70,10 +69,25 @@ const getUserById = async (id) => {
     return rows[0];
 };
 
+const getUserByUsername = async (username) => {
+    const [rows] = await pool.execute('SELECT * From users WHERE username = ?',[username]);
+    return rows[0];
+};
+
  const login = async(username, password) => {
     const [rows] = await pool.execute('SELECT * From users WHERE username = ?',[username]);
     return rows[0];
  }
 
 
-export { gelAllUser, register, inserUser , updateUser, deleteUser, detailUser, getUserById, login }
+export { 
+    gelAllUser, 
+    register, 
+    inserUser , 
+    updateUser, 
+    deleteUser, 
+    detailUser, 
+    getUserById, 
+    login, 
+    getUserByUsername,
+ }
